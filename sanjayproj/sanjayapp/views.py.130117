@@ -1,0 +1,39 @@
+from django.shortcuts import render
+
+# Create your views here.
+from django.http import HttpResponse
+from .models import Host
+from .models import Apps
+from .models import Musician
+
+def index(request):
+#    return HttpResponse("Hello, world. You're at the sanjayapp index.")
+# Added on 050117
+     all_hosts = Host.objects.all()
+     html = ''
+     for host in all_hosts:
+        url = '/sanjayapp/' + str(host.name) + '/'
+        html += '<a href="' + url + '">' + host.name + '</a><br>'
+     return HttpResponse(html)
+    
+# Added on 090117
+def detail(request, apps_id):
+    return HttpResponse("You're looking at question %s." % apps_id)
+
+# Added on 100117
+def Anu(request):
+#    return HttpResponse("Anu you are under testing")
+    apps_list = Apps.objects.all()
+    for apps in apps_list:
+       queryset = str(apps.applicationname)
+    context = {
+          "queryset": queryset}
+    return render(request, 'sanjayapp/anu.html', context)
+
+def Neelam(request):
+    return HttpResponse("Hello Bibi you dont need to take tension feel happy ")
+
+def Yuvi(request):
+    musician_list = Musician.objects.all()
+    context = { "musician_list": musician_list}
+    return render(request, 'sanjayapp/Yuvi.html', context)

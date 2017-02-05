@@ -1,0 +1,15 @@
+from django.conf.urls import url
+
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.base, name='base'),
+    
+# Added on 090117
+#    url(r'^sanjayapp/$', views.Mukesh, name='Mukesh'),
+     url(r'^detail(?P<apps_id>)/$', views.detail, name='detail'),
+     url(r'^Anu/$', views.Anu, name='Anu'),
+     url(r'^Neelam/$', views.Neelam, name='Neelam'),
+     url(r'^Yuvi/$', views.Yuvi, name='Yuvi'),
+     url(r'^album/$', views.album, name='album')
+]
